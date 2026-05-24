@@ -1,9 +1,21 @@
 {
-  "public": false,
-  "rewrites": [
+  "builds": [
     {
-      "source": "/(.*)",
-      "destination": "/frontend/$1"
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/frontend/static/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/$1"
     }
   ]
 }
